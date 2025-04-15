@@ -1,0 +1,15 @@
+app-clinic-list {
+  width: 50%;
+}
+
+.background {
+  background-image: linear-gradient(
+      to top right,
+      rgb(68, 76, 108),
+      rgba(109, 101, 123, 0.7),
+      rgb(121, 131, 227)
+    ),
+    url(../assets/images/medicines/background2.jpg);
+  background-position: center;
+  background-size: cover;
+}

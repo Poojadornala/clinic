@@ -1,0 +1,172 @@
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#modal-med' + index + 1"
+  (click)="edit()"
+>
+  Edit
+</button>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="{{ 'modal-med' + index + 1 }}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+  #maindiv
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="staticBackdropLabel">Medicine Data</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!--BEGIN OF FORM-->
+        <form
+          class="d-flex flex-column"
+          [formGroup]="medicineData"
+          (ngSubmit)="onSubmit(maindiv)"
+        >
+          <div>
+            <div class="field col-sm-12 mt-2">
+              <label for="inputtext">Name</label>
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  formControlName="Name"
+                />
+              </span>
+
+              <span
+                class="help-block"
+                *ngIf="
+                  !medicineData.get('Name').valid &&
+                  medicineData.get('Name').touched
+                "
+                ><span *ngIf="medicineData.get('Name').errors['required']"
+                  >Please Enter Medicine Name!</span
+                >
+                <span
+                  *ngIf="medicineData.get('Name').errors['numbersIsForbidden']"
+                  >Invalid Input!</span
+                >
+              </span>
+            </div>
+            <div class="col-sm-12 mb-2">
+              <label for="inputtext">Dosage</label>
+              <div class="p-inputgroup">
+                <input
+                  type="text"
+                  pInputText
+                  placeholder="Dosage"
+                  formControlName="Dose"
+                />
+
+                <span class="p-inputgroup-addon">/day</span>
+              </div>
+              <span
+                class="help-block"
+                *ngIf="
+                  !medicineData.get('Dose').valid &&
+                  medicineData.get('Dose').touched
+                "
+                ><span *ngIf="medicineData.get('Dose').errors['required']"
+                  >Please Enter Dosage!</span
+                >
+                <span
+                  *ngIf="medicineData.get('Dose').errors['stringIsForbidden']"
+                  >Invalid Input!</span
+                >
+              </span>
+            </div>
+          </div>
+          <div>
+            <div class="col-sm-12" *ngIf="isRoleEmployee">
+              <label for="inputtext">Price</label>
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">EP</span>
+                <input
+                  type="text"
+                  pInputText
+                  placeholder="Price"
+                  formControlName="Price"
+                />
+
+                <span class="p-inputgroup-addon">.00</span>
+              </div>
+              <span
+                class="help-block"
+                *ngIf="
+                  !medicineData.get('Price').valid &&
+                  medicineData.get('Price').touched
+                "
+                ><span *ngIf="medicineData.get('Price').errors['required']"
+                  >Please Enter Price!</span
+                >
+                <span
+                  *ngIf="medicineData.get('Price').errors['stringIsForbidden']"
+                  >Invalid Input!</span
+                >
+              </span>
+            </div>
+            <div class="field col-sm-12">
+              <label for="inputtext">Stock</label>
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  formControlName="Stock"
+                />
+              </span>
+              <span
+                class="help-block"
+                *ngIf="
+                  !medicineData.get('Stock').valid &&
+                  medicineData.get('Stock').touched
+                "
+                ><span *ngIf="medicineData.get('Stock').errors['required']"
+                  >Please Enter Stock!</span
+                >
+                <span
+                  *ngIf="medicineData.get('Stock').errors['stringIsForbidden']"
+                  >Invalid Input!</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              class="btn btn-success"
+              type="submit"
+              [disabled]="medicineData.invalid"
+            >
+              Save changes
+            </button>
+          </div>
+        </form>
+        <!--END OF FORM-->
+      </div>
+    </div>
+  </div>
+</div>

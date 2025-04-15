@@ -1,0 +1,20 @@
+.py-5 {
+  background-image: linear-gradient(
+      to top right,
+      rgb(16 21 43 / 1),
+      rgb(39 25 60 / 0.7),
+      rgb(49 55 105 / 1)
+    ),
+    url(../../../assets/images/login.jpg);
+  background-position: center;
+  background-size: cover;
+  box-shadow: -2px -2px 10px #10152b, 2px 2px 20px#10152b;
+  transition: all 0.25s;
+  border-radius: 15px;
+  backdrop-filter: blur(50px) !important;
+}
+
+.py-5:hover {
+  transform: scale(1.02);
+  transition: transform 0.25s;
+}

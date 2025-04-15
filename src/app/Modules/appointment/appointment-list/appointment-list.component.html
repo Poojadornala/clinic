@@ -1,0 +1,45 @@
+
+
+
+
+
+    <p-table [value]="appointments" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="header">
+
+        <tr>
+          <th>Doctor</th>
+          <th>Patient </th>
+          <th>Section</th>
+          <th>clinic</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+
+
+      </ng-template>
+      <ng-template pTemplate="body" let-element>
+        <tr>
+          <td>{{element?.doctorID?.name}}</td>
+          <td>{{element?.patientID?.Name}}</td>
+          <td>{{element?.patientID?.Section}}</td>
+          <td>{{element?.clinicID?.clinicName}}</td>
+          <td>{{element?.date}}</td>
+          <td>
+
+            <div class="justify-content-center gap-2">
+              <p-toast></p-toast>
+              <p-confirmPopup></p-confirmPopup>
+              <button mat-fab color="primary" (click)="confirm($event,element._id)">
+                <mat-icon>cancel</mat-icon>
+
+              </button>
+
+            </div>
+
+
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+

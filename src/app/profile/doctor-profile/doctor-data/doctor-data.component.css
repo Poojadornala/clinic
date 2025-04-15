@@ -1,0 +1,23 @@
+
+table {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add a box-shadow */
+    border-collapse: collapse; /* Set border-collapse to collapse to remove extra space between cells */
+    width: 100%; /* Set table width to 100% */
+  
+  }
+  
+  td, th {
+    border: 1px solid #dddddd; /* Add a border to cells */
+    text-align: center; /* Set text alignment to left */
+    padding: 8px; /* Add some padding to cells */
+  }
+ 
+    
+  th {
+    background-color: #1a30ad; /* Set a background color for table headers */
+  }
+  h2,#mysearch{
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  

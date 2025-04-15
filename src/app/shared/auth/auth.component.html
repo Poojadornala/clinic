@@ -1,0 +1,292 @@
+<!-- <div class="py-5 col-sm-6"> -->
+<form
+  *ngIf="isLoginMode"
+  [formGroup]="signInForm"
+  (ngSubmit)="onSubmitLogin()"
+  class="mb-5 mt-5 py-5 col-sm-4 mx-auto"
+>
+  <div
+    class="container d-flex flex-column align-items-center justify-content-center"
+  >
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="isInvalidEmailCorrect != undefind"
+    >
+      {{
+        isInvalidEmailCorrect
+          ? "Please provide correct password!"
+          : "This Email is not Exist Try to Sign up!"
+      }}
+    </div>
+    <div class="col-sm-10 d-flex flex-column mb-4">
+      <label for="exampleInputEmail1" class="form-label text-light"
+        >Email address</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        formControlName="email"
+      />
+      <span
+        class="help-block"
+        *ngIf="
+          !signInForm.get('email').valid && signInForm.get('email').touched
+        "
+        ><small
+          *ngIf="
+            signInForm.get('email').errors['email'] ||
+            signInForm.get('email').errors['required']
+          "
+          >Please Enter a valid Email</small
+        >
+      </span>
+      <!-- <small *ngIf="isInvalidEmail"
+        >This Email is not Exist Try to Sign up!</small
+      > -->
+    </div>
+    <div class="col-sm-10 d-flex flex-column mb-1">
+      <label for="username1" class="text-light">Password</label>
+      <input type="password" class="form-control" formControlName="password" />
+      <span
+        class="help-block"
+        *ngIf="
+          !signInForm.get('password').valid &&
+          signInForm.get('password').touched
+        "
+      >
+        <small *ngIf="signInForm.get('password').errors['required']"
+          >Password is required</small
+        >
+      </span>
+    </div>
+    <div class="mt-3">
+      <button
+        class="btn btn-success me-1 text-light"
+        type="submit"
+        [disabled]="signInForm.invalid"
+      >
+        Login
+      </button>
+      <button
+        class="btn btn-primary text-light"
+        type="button"
+        (click)="onModeChanges()"
+      >
+        Switch to SignUp
+      </button>
+    </div>
+  </div>
+</form>
+<!-- </div> -->
+<!--//////////////////////-->
+
+<form
+  *ngIf="!isLoginMode"
+  [formGroup]="signUpForm"
+  (ngSubmit)="onSubmitSignUp()"
+  class="mb-5 mt-5 py-5 col-sm-4 mx-auto"
+>
+  <div
+    class="container d-flex flex-column align-items-center justify-content-center"
+  >
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="isEmailDuplicated != undefind"
+    >
+      is Email is Already Used!
+    </div>
+    <div class="col-sm-10 d-flex flex-column mb-1">
+      <label for="exampleInputEmail1" class="form-label text-light">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        formControlName="Name"
+      />
+      <span
+        class="help-block"
+        *ngIf="!signUpForm.get('Name').valid && signUpForm.get('Name').touched"
+        ><small *ngIf="signUpForm.get('Name').errors['required']"
+          >Please Enter Your Name!</small
+        >
+        <small *ngIf="signUpForm.get('Name').errors['numbersIsForbidden']"
+          >Invalid Input!</small
+        >
+      </span>
+    </div>
+    <div class="col-sm-10 d-flex flex-column mb-1">
+      <label for="exampleInputEmail1" class="form-label text-light"
+        >Email address</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        formControlName="Email"
+      />
+      <span
+        class="help-block"
+        *ngIf="
+          !signUpForm.get('Email').valid && signUpForm.get('Email').touched
+        "
+        ><small
+          *ngIf="
+            signUpForm.get('Email').errors['Email'] ||
+            signUpForm.get('Email').errors['required']
+          "
+          >Please Enter a valid Email</small
+        >
+      </span>
+    </div>
+    <div class="col-sm-10 d-flex flex-column mb-1">
+      <label for="exampleInputEmail1" class="form-label text-light"
+        >Password</label
+      >
+      <input type="password" class="form-control" formControlName="Password" />
+
+      <span
+        class="help-block"
+        *ngIf="
+          !signUpForm.get('Password').valid &&
+          signUpForm.get('Password').touched
+        "
+      >
+        <small *ngIf="signUpForm.get('Password').errors['required']"
+          >Password is required</small
+        >
+        <small *ngIf="signUpForm.get('Password').errors['minlength']"
+          >min length is 8 ch.</small
+        >
+      </span>
+    </div>
+    <div class="col-sm-10 d-flex flex-column mb-1">
+      <label for="exampleInputEmail1" class="form-label text-light">Age</label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        formControlName="Age"
+      />
+      <span
+        class="help-block"
+        *ngIf="!signUpForm.get('Age').valid && signUpForm.get('Age').touched"
+        ><small *ngIf="signUpForm.get('Age').errors['required']"
+          >Please Enter your age!</small
+        >
+        <small *ngIf="signUpForm.get('Age').errors['stringIsForbidden']"
+          >Invalid Input!</small
+        >
+      </span>
+    </div>
+    <div class="d-flex flex-column col-sm-10">
+      <div class="col-sm-12 d-flex flex-column mb-1">
+        <label for="exampleInputEmail1" class="form-label text-light"
+          >Government</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          formControlName="government"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !signUpForm.get('government').valid &&
+            signUpForm.get('government').touched
+          "
+          ><small *ngIf="signUpForm.get('government').errors['required']"
+            >Please Enter Your Government!</small
+          >
+          <small
+            *ngIf="signUpForm.get('government').errors['numbersIsForbidden']"
+            >Invalid Input!</small
+          >
+        </span>
+      </div>
+      <div class="col-sm-12 d-flex flex-column mb-1">
+        <label for="exampleInputEmail1" class="form-label text-light"
+          >City</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          formControlName="city"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !signUpForm.get('city').valid && signUpForm.get('city').touched
+          "
+          ><small *ngIf="signUpForm.get('city').errors['required']"
+            >Please Enter Your City!</small
+          >
+          <small *ngIf="signUpForm.get('city').errors['numbersIsForbidden']"
+            >Invalid Input!</small
+          >
+        </span>
+      </div>
+      <div class="col-sm-12 d-flex flex-column mb-1">
+        <label for="exampleInputEmail1" class="form-label text-light"
+          >Street</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          formControlName="street"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !signUpForm.get('street').valid && signUpForm.get('street').touched
+          "
+          ><small *ngIf="signUpForm.get('street').errors['required']"
+            >Please Enter your Street!</small
+          >
+        </span>
+      </div>
+      <div class="col-sm-12 d-flex flex-column mb-1">
+        <label for="exampleInputEmail1" class="form-label text-light"
+          >Building</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          aria-describedby="emailHelp"
+          formControlName="building"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !signUpForm.get('building').valid &&
+            signUpForm.get('building').touched
+          "
+          ><small *ngIf="signUpForm.get('building').errors['required']"
+            >Please Enter your Building!</small
+          >
+        </span>
+      </div>
+    </div>
+    <div class="mt-3">
+      <button
+        class="btn btn-success me-1 text-light"
+        type="submit"
+        [disabled]="signUpForm.invalid"
+      >
+        SignUp
+      </button>
+      <button
+        class="btn btn-primary text-light"
+        type="button"
+        (click)="onModeChanges()"
+      >
+        Switch to SignIn
+      </button>
+    </div>
+  </div>
+</form>

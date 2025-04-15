@@ -1,0 +1,115 @@
+
+ 
+    <div class="photo me-1 mb-1">
+
+<pre>
+
+</pre>
+      <h1 class="text-primary"> please Fill data to make reservation</h1>
+
+
+
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label class="control-label">Choose doctor email</label>
+          <br>
+          <p-dropdown [options]="doctorArray" [(ngModel)]="selecteDoctor" optionLabel="email" [filter]="true"
+            filterBy="email" [showClear]="true" placeholder="Doctor">
+            <ng-template pTemplate="selectedItem">
+              <div class="flex align-items-center gap-1" *ngIf="selecteDoctor">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + selecteDoctor?.email" style="width: 18px" />
+                <div>{{ selecteDoctor.email }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-doctor pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + doctor.email" style="width: 18px" />
+                <div>{{ doctor.email }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-4">
+        <div class="form-group label-floating">
+          <label class="control-label">Choose Patient email</label>
+          <br>
+          <p-dropdown [options]="patientArray" [(ngModel)]="selectPatient" optionLabel="Email" [filter]="true"
+            filterBy="Email" [showClear]="true" placeholder="Patient">
+            <ng-template pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2" *ngIf="selectPatient">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + selectPatient.Email" style="width: 18px" />
+                <div>{{ selectPatient.Email }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-patient pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + patient.Email" style="width: 18px" />
+                <div>{{ patient.Email }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="col-sm-4">
+        <div class="form-group label-floating">
+          <label class="control-label">Choose Select Clinic </label>
+          <br>
+          <p-dropdown [options]="clinicArray" [(ngModel)]="selectClinic" optionLabel="clinicName" [filter]="true"
+            filterBy="clinicName" [showClear]="true" placeholder=" Clinic">
+            <ng-template pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2" *ngIf="selectClinic">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + selectClinic.clinicName.toLowerCase()" style="width: 18px" />
+                <div>{{ selectClinic.clinicName }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-clinic pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                  [class]="'flag flag-' + clinic.clinicName.toLowerCase()" style="width: 18px" />
+                <div>{{ clinic.clinicName }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div class="col-sm-4" id="mylast">
+        <div class="form-group label-floating">
+          <label class="control-label">Date</label>
+          <br>
+          <p-calendar class="custom-cal" [(ngModel)]="date" [showTime]="true" [showIcon]="true" [showSeconds]="true"
+            [minDate]="date"></p-calendar>
+
+
+        </div>
+
+        <!-- <p-button onclick="this.save()">save Reservation</p-button> -->
+        <p-button (click)="saveReservation()">Reserve</p-button>
+
+
+
+
+      </div>
+
+
+
+    </div>
+ 
+
+

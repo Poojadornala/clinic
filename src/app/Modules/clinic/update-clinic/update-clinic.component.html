@@ -1,0 +1,38 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate" (click)="show()" [attr.data-bs-target]="'#modal-' + index" >
+   Edit
+   
+  </button>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="{{ 'modal-' + index }}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">update Clinic</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         
+          <div class="input-group flex-nowrap mt-2">
+            <span class="input-group-text">Name</span>
+            <input type="text" id="{{'name-'+index}}" class="form-control"  aria-label="name" aria-describedby="addon-wrapping" #name  >
+          </div>
+  
+          <div class="input-group flex-nowrap mt-2">
+            <span class="input-group-text">Address</span>
+            <input type="text" id="{{'address-'+index}}" class="form-control"  aria-label="address" aria-describedby="addon-wrapping" #address>
+
+          </div>
+      
+        </div>
+  
+   
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary " data-bs-dismiss="modal"(click)="update({Name:name.value,Address:address.value})" >save</button>
+        </div>
+      </div>
+  
+      </div>
+    </div>

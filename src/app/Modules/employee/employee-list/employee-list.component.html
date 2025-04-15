@@ -1,0 +1,93 @@
+<div class="p-inputgroup">
+  <span class="p-inputgroup-addon"><i class="fa fa-search"></i></span>
+  <input
+    pInputText
+    type="text"
+    pInputText
+    class="form-control"
+    placeholder="Search By Name"
+    [(ngModel)]="search"
+    (keyup)="searchByName($event)"
+  />
+</div>
+
+<div class="row justify-content-center">
+  <!-- <div
+    class="card-container mx-2 my-2 p-4"
+    *ngFor="let employee of pageItems; let i = index"
+  >
+    <span class="pro">PRO</span>
+
+    <img
+      class="round"
+      [attr.src]="'./../../../../assets/images/users/' + employee.photo"
+      alt="Employee Photo"
+      style="width: 150px"
+    />
+    <h3>Mr. {{ employee.name }}</h3>
+    <h6>Age: {{ employee.age }}</h6>
+    <h6></h6>
+    <p>{{ employee.email }} <br /></p>
+    <div class="buttons">
+      <app-employee-edit
+        [currentEmployee]="employee"
+        [currentIndex]="i"
+      ></app-employee-edit>
+      <button class="primary ghost" (click)="remove(employee._id)">
+        Delete
+      </button>
+    </div>
+  </div> -->
+  <div class="map-responsive my-2 col-lg-12 row justify-content-evenly">
+    <div
+      class="mx-1 my-6 col-sm-10 col-lg-5 col-xl-3"
+      *ngFor="let employee of pageItems; let i = index"
+    >
+      <app-employee-profile-card
+        [employee]="employee"
+        [index]="i"
+        [mode]="'list'"
+        [role]="role"
+      ></app-employee-profile-card>
+    </div>
+  </div>
+
+  <!-- <div
+  class="card"
+  *ngFor="let employee of employees; let i = index"
+  [paginator]="true"
+>
+  <div class="card-img">
+    <img src="https://placehold.it/200x200" alt="Doctor Profile" />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ employee.name }}</h5>
+    <p class="card-specialty">{{ employee._id }}</p>
+    <p class="card-location">{{ i }}</p>
+    <div class="card-actions">
+      <button class="btn btn-primary">Book Appointment</button>
+      <button class="btn btn-link">View Profile</button>
+      <app-employee-edit
+        [currentEmployee]="employee"
+        [currentIndex]="i"
+      ></app-employee-edit>
+
+      <button class="btn btn-danger" (click)="remove(employee._id)">
+        Remove
+      </button>
+    </div>
+  </div>
+</div> -->
+  <p-paginator
+    [rows]="9"
+    [totalRecords]="pageNo"
+    (onPageChange)="page($event)"
+  ></p-paginator>
+  <!-- <div><app-employee-options></app-employee-options></div> -->
+
+  <!-- <div *ngIf="editMode">
+  <app-employee-edit [currentEmployee]="currentEmployee"></app-employee-edit>
+</div> -->
+
+  <app-employee-add *ngIf="role == 'employee'"></app-employee-add>
+</div>

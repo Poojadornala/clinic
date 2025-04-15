@@ -1,0 +1,236 @@
+
+      
+      <div class="card-body">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class=" text-end  ">
+                <button class="btn btn-sm btn-primary text-end me-5 fs-6" type="submit"  [disabled]="editForm.invalid">save</button>
+              </div>
+          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-email"
+                        >Email address</label
+                      >
+                      <input
+                        type="email"
+                        id="input-email"
+                        class="form-control form-control-alternative"
+                        placeholder=""
+                        formControlName="email"
+                        name="email"
+                        value=""
+                      />
+                      <div
+                      class="help-block"
+                      *ngIf="editForm.get('email').invalid && editForm.get('email').touched"
+                    >
+                      Please provide a valid email.
+                    </div>
+                    </div>
+                  </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="password"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    id="input-password"
+                    class="form-control form-control-alternative"
+                    placeholder="password"
+                    name="password"
+                    formControlName="password"
+                  />
+                  <div
+                  class="help-block"
+                  *ngIf="editForm.get('password').invalid && editForm.get('password').touched"
+                >
+                  Please provide a valid password.
+                </div>
+                 
+                </div>
+              </div>
+             
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-first-name"
+                    >Full name</label
+                  >
+                  <input
+                    type="text"
+                    id="input-first-name"
+                    class="form-control form-control-alternative"
+                    placeholder="full name"
+                    formControlName="name"
+                    name="name"
+                    value=""
+                  />
+                  <div
+                  class="help-block"
+                  *ngIf="editForm.get('name').invalid && editForm.get('name').touched"
+                >
+                  Please provide a valid name.
+                </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-age"
+                    >Age</label
+                  >
+                  <input
+                    type="number"
+                    id="input-age"
+                    class="form-control form-control-alternative"
+                    placeholder="Age"
+                    formControlName="age"
+                    name="age"
+                  />
+                  <div
+                  class="help-block"
+                  *ngIf="editForm.get('age').invalid && editForm.get('age').touched"
+                >
+                  Please provide a valid age.
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <!-- Address -->
+          <h6 class="heading-small text-muted mb-4">Contact information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-md-12">
+                
+                <div class="form-group">
+                  <label class="form-control-label" for="input-address"
+                    >Street / Building</label
+                   
+                  >
+                  <div class="input-group">
+                    <div class="form-group">
+                        <input
+                        id="input-address-street"
+                        class="form-control form-control-alternative"
+                        formControlName="street"
+                        type="text"
+                      />
+                    
+                    </div>
+                    <div
+                    class="help-block"
+                    *ngIf="editForm.get('street').invalid && editForm.get('street').touched"
+                  >
+                    Please provide a valid street.
+                  </div>
+
+                  <div class="form-group">
+
+                      <input
+                      id="input-address-building"
+                      class="form-control form-control-alternative"
+                      value="{{ EditeEmployee.address.building }}"
+                      formControlName="building"
+                      type="text"
+                    />
+                  </div>
+                  <div
+                  class="help-block"
+                  *ngIf="editForm.get('building').invalid && editForm.get('building').touched"
+                >
+                  Please provide a valid building.
+                </div>
+                    
+                  </div>
+                 
+           
+                </div>
+              
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-city"
+                    >City</label
+                  >
+                  <input
+                    type="text"
+                    id="input-city"
+                    class="form-control form-control-alternative"
+                    placeholder="City"
+                    formControlName="city"
+                  
+                  />
+                </div>
+                <div
+                class="help-block"
+                *ngIf="editForm.get('city').invalid && editForm.get('city').touched"
+              >
+                Please provide a valid city.
+              </div>
+
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-country"
+                    >Government</label
+                  >
+                  <input
+                    type="text"
+                    id="input-country"
+                    class="form-control form-control-alternative"
+                    placeholder="Country"
+                    formControlName="government"
+                    value="{{EditeEmployee.address.government}}"
+                  />
+                  <div
+                  class="help-block"
+                  *ngIf="editForm.get('government').invalid && editForm.get('government').touched"
+                >
+                  Please provide a valid government.
+                </div>
+  
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-country"
+                    >Postal code</label
+                  >
+                  <input
+                    type="number"
+                    id="input-postal-code"
+                    class="form-control form-control-alternative"
+                    placeholder="055"
+                  />
+                </div>
+              </div>
+          
+
+            </div>
+          </div>
+          <hr class="my-4" />
+          <!-- Description -->
+          <h6 class="heading-small text-muted mb-4">About me</h6>
+          <div class="pl-lg-4">
+            <div class="form-group focused">
+              <label>About Me</label>
+              <textarea
+                rows="4"
+                class="form-control form-control-alternative"
+                placeholder="A few words about you ..."
+              >
+A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea
+              >
+            </div>
+          </div>
+        
+        </form>
+      </div>
+   

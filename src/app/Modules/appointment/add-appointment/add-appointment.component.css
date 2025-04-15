@@ -1,0 +1,64 @@
+mat-tab-group
+{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    height: 100%;
+}
+
+label
+{
+    font-size: large;
+    margin-top: 3px;
+}
+
+
+tr th
+{
+ 
+    /* fallback for old browsers */
+  
+font-size: large;
+
+
+
+}
+
+#mylast
+{
+    margin-bottom: 70px;
+}
+
+.photo
+{
+background-image: url("../../../../assets/images/book.jpg");
+ background-position-x: right;
+ background-repeat: no-repeat;
+ background-size: auto;
+ background-color: white;
+ margin-left: 5px;
+ padding-left: 20px;
+ padding-bottom: 8px;
+}
+
+tr td 
+{
+  padding: 2px;
+  font-size: large;
+}
+
+:host ::ng-deep .p-calendar .p-datepicker
+    {
+    background-color: cornflowerblue;
+    color: white;
+    font-weight: bold;
+    font-size: xx-small;
+   max-width: fit-content;
+   max-height: fit-content;
+   padding: 1px;
+
+} 
+
+:host ::ng-deep .p-dropdown 
+{
+    width: -webkit-fill-available;
+}

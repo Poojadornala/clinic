@@ -1,0 +1,6 @@
+<ul>
+  <div *ngFor="let option of ageOptions">
+    <label>{{ option }}</label>
+    <input type="radio" name="age" [value]="option" (change)="filter(option)" />
+  </div>
+</ul>

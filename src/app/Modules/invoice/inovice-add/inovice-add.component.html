@@ -1,0 +1,215 @@
+<button
+  type="button"
+  class="btn float"
+  data-bs-toggle="modal"
+  data-bs-target="#addInvoice"
+>
+  <i class="fa-solid fa-receipt my-float"> </i>
+</button>
+<div
+  class="modal fade"
+  id="addInvoice"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  data-bs-backdrop="static"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Invoice</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          class="formwraper"
+          [formGroup]="signupForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="row mb-3" formArrayName="medicine">
+            <label for="medicine" class="col-form-label col-4-sm col-5"
+              >Medicine</label
+            >
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="onAddMedicine()"
+            >
+              Add Medicine
+            </button>
+            <div
+              class="form-group"
+              *ngFor="let med of getControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <span>Medicine: NO {{ i + 1 }}</span>
+              <div class="row mb-1">
+                <span>ID</span>
+                <input
+                  type="text"
+                  formControlName="medicineID"
+                  class="form-control col-8-sm col-7"
+                />
+                <span
+                  class="help-block"
+                  *ngIf="
+                    !med.get('medicineID').valid &&
+                    med.get('medicineID').touched
+                  "
+                  >Invalid ID</span
+                >
+              </div>
+              <div class="row mb-1">
+                <span>No.</span>
+                <input
+                  type="text"
+                  formControlName="quantity"
+                  class="form-control col-8-sm col-7"
+                />
+                <span
+                  class="help-block"
+                  *ngIf="
+                    !med.get('quantity').valid && med.get('quantity').touched
+                  "
+                  >Invalid Number</span
+                >
+              </div>
+            </div>
+            <span
+              class="help-block"
+              *ngIf="
+                !signupForm.get('medicine').valid &&
+                signupForm.get('medicine').touched
+              "
+              >Invalid Medicine</span
+            >
+            <span class="help-block" *ngIf="medicineError"
+              >Medicine Not Existed</span
+            >
+          </div>
+          <div class="row mb-3">
+            <label for="appointmentID" class="col-form-label col-4-sm col-5"
+              >AppointmentID</label
+            >
+            <input
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="appointmentID"
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                !signupForm.get('appointmentID').valid &&
+                signupForm.get('appointmentID').touched
+              "
+              >Invalid AppoinmentID</span
+            >
+            <span
+              class="help-block"
+              *ngIf="
+                appoinmentError &&
+                appoinmentErrorValue == signupForm.value.appointmentID
+              "
+              >Appoinment Already Used Or Not Existed</span
+            >
+          </div>
+
+          <div class="row mb-3">
+            <label for="patientID" class="col-form-label col-4-sm col-5"
+              >patientID</label
+            >
+            <input
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="patientID"
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                !signupForm.get('patientID').valid &&
+                signupForm.get('patientID').touched
+              "
+              >Invalid patientID</span
+            >
+            <span
+              class="help-block"
+              *ngIf="
+                patientError && patientErrorValue == signupForm.value.patientID
+              "
+              >Patient Id Not Existed</span
+            >
+          </div>
+          <div class="row mb-3">
+            <label for="Payment Method" class="col-form-label col-4-sm col-5"
+              >Payment Method</label
+            >
+            <select
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="paymentMethod"
+            >
+              <option value="Cash">Cash</option>
+              <option value="Insurance Card">Insurance Card</option>
+              <option value="Credit Card">Credit Card</option>
+            </select>
+          </div>
+          <span
+            class="help-block"
+            *ngIf="
+              !signupForm.get('paymentMethod').valid &&
+              signupForm.get('paymentMethod').touched
+            "
+            >Invalid Payment Method</span
+          >
+          <div
+            class="row mb-3"
+            *ngIf="signupForm.value.paymentMethod === 'Insurance Card'"
+          >
+            <label for="Payment Method" class="col-form-label col-4-sm col-5"
+              >Discount</label
+            >
+            <select
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="discount_percentage"
+            >
+              <option value="0.1">10%</option>
+              <option value="0.2">20%</option>
+              <option value="0.3">30%</option>
+            </select>
+          </div>
+          <span
+            class="help-block"
+            *ngIf="
+              !signupForm.get('discount_percentage').valid &&
+              signupForm.get('discount_percentage').touched
+            "
+            >Invalid Discount</span
+          >
+
+          <div class="text-center">
+            <input
+              type="submit"
+              class="btn btn-primary"
+              id="register"
+              (click)="addInvoice()"
+              [disabled]="!signupForm.valid"
+            />
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

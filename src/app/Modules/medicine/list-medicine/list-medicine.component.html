@@ -1,0 +1,52 @@
+<app-add-medicine></app-add-medicine>
+
+<app-filter-medicine
+  (sendFilteredObject)="reciveFilteredObject($event)"
+></app-filter-medicine>
+<div class="medicine-grid mb-5">
+  <div
+    class="card"
+    *ngFor="let medicine of getVisibleMedicineList(); let i = index"
+  >
+    <div class="card-img">
+      <img src="../../../../assets/images/medicine.jpg" alt="Medicine" />
+    </div>
+    <div class="card-body">
+      <div class="card-title h1 mb-3">
+        {{ medicine.Name }}
+      </div>
+      <div>
+        <p class="card-specialty">
+          <span class="h4 me-1">Price:</span> {{ medicine.Price }}
+          <span class="ms-1">EP.</span>
+        </p>
+        <p class="card-specialty">
+          <span class="h4 me-1">Dosage:</span>{{ medicine.Dose
+          }}<span class="ms-1">%</span>
+        </p>
+        <p class="card-location">
+          <span class="h4 me-1">Stock No. :</span>{{ medicine.Stock }}
+        </p>
+      </div>
+      <div class="card-actions">
+        <app-edit-medicine
+          [medicineObj]="medicine"
+          [index]="i"
+        ></app-edit-medicine>
+        <button
+          class="btn btn-danger"
+          (click)="deleteMedicine(medicine)"
+          *ngIf="isRoleEmployee"
+        >
+          delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<p-paginator
+  [rows]="rowsPerPage"
+  [totalRecords]="medicineList.length"
+  [rowsPerPageOptions]="[6, 18, 30]"
+  (onPageChange)="onPageChange($event)"
+></p-paginator>

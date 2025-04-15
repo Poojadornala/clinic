@@ -1,0 +1,42 @@
+<app-inovice-add> </app-inovice-add>
+
+<p-megaMenu [model]="items" (click)="filterByPaymentMethod($event)">
+  <div class="row g-2">
+    <div class="col-auto">
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="date"
+        (change)="filterByDate($event)"
+      />
+    </div>
+    <div class="col-auto">
+      <button tton class="btn btn-danger" (click)="resetFilter()">Reset</button>
+    </div>
+  </div>
+</p-megaMenu>
+<div class="row justify-content-center">
+  <div
+    class="card-container mx-2 my-2 p-4"
+    *ngFor="let invoice of pageItems; let i = index"
+  >
+    <h3>{{ invoice._id }}</h3>
+    <h4>Money: {{ invoice.money }}</h4>
+
+    <p>
+      Payment Method: {{ invoice.paymentMethod }} <br />
+      Payment Status: {{ invoice.payment_status }}
+    </p>
+    <div class="buttons">
+      <button type="button" class="success" (click)="onShow(invoice._id)">
+        Details
+      </button>
+    </div>
+  </div>
+</div>
+<p-paginator
+  #paginator
+  [rows]="9"
+  [totalRecords]="pageNo"
+  (onPageChange)="page($event)"
+></p-paginator>

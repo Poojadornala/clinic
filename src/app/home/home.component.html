@@ -1,0 +1,238 @@
+<div class="text-center">
+  <h1 class="my-4 fw-bolder">Welcome To WE CARE clinics</h1>
+  <h3 class="text-success text-uppercase">our duty IS TO HELP YOU 24/7</h3>
+</div>
+
+<!-- <div class="card bg-dark text-white m-auto" style="width:90%">
+    <img src="../../assets/images/404.jpg" class="card-img" alt="...">
+    <div class="card-img-overlay">
+        <br>
+        <h5 class="card-title fw-bolder text-success fs-3 "> &nbsp; &nbsp; WE CARE Clinics</h5>
+        <p class="card-text text-dark">&nbsp; &nbsp; This is a wider card with supporting text below as a natural
+
+            This content is a little bit longer.</p>
+        <p class="card-text text-dark">&nbsp; &nbsp; Last updated 3 mins ago</p>
+    </div>
+</div> -->
+<!-- <h1>{{doctorsCount}}</h1>
+<h1>{{patientsCount}}</h1>
+<h1>{{clinicsCount}}</h1>
+<h1>{{appointmentsCount}}</h1> -->
+
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+  <div class="col">
+    <div
+      class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg mx-0"
+      style="
+        background-image: url('../../assets/images/Doctor.jpg');
+        background-size: cover;
+      "
+    >
+      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-dark">
+          {{ doctorsCount }} doctors serve you
+        </h2>
+        <ul class="d-flex list-unstyled mt-auto">
+          <li class="me-auto">
+            <img
+              src="../../assets/images/wecareUAE.jpg"
+              alt="Bootstrap"
+              width="32"
+              height="32"
+              class="rounded-circle border border-white"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div
+      class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+      style="
+        background-image: url('../../assets/images/patient.jpg');
+        background-size: cover;
+      "
+    >
+      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-dark">
+          {{ patientsCount }} patients trust us
+        </h2>
+        <ul class="d-flex list-unstyled mt-auto">
+          <li class="me-auto">
+            <img
+              src="../../assets/images/wecareUAE.jpg"
+              alt="Bootstrap"
+              width="32"
+              height="32"
+              class="rounded-circle border border-white"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div
+      class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+      style="
+        background-image: url('../../assets/images/clinic.jpg');
+        background-size: cover;
+      "
+    >
+      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-dark">
+          {{ clinicsCount }} clinic covers all governments
+        </h2>
+        <ul class="d-flex list-unstyled mt-auto">
+          <li class="me-auto">
+            <img
+              src="../../assets/images/wecareUAE.jpg"
+              alt="Bootstrap"
+              width="32"
+              height="32"
+              class="rounded-circle border border-white"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div
+      class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+      style="
+        background-image: url('../../assets/images/appointment.jpg');
+        background-size: cover;
+      "
+    >
+      <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-dark">
+          {{ appointmentsCount }} appointments is served
+        </h2>
+        <ul class="d-flex list-unstyled mt-auto">
+          <li class="me-auto">
+            <img
+              src="../../assets/images/wecareUAE.jpg"
+              alt="Bootstrap"
+              width="32"
+              height="32"
+              class="rounded-circle border border-white"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<div class="card mb-3">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+            This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+</div> -->
+
+<div style="width: 60%" class="mx-auto" id="GFG">
+  <div style="width: 100%">
+    <p-carousel class="mx-auto" [value]="images" [autoplayInterval]="3000">
+      <ng-template let-images pTemplate="item">
+        <div class="product-item" style="width: 100%">
+          <div class="product-item-content">
+            <a (click)="sendingParameterToDoctorsService(images.title)">
+              <img
+                [src]="images.previewImageSrc"
+                style="overflow: hidden; background-repeat: no-repeat"
+                width="100%"
+                height="auto"
+                [alt]="images.alt"
+                [title]="images.title"
+            /></a>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>
+
+<!-- <div id="carouselExampleDark" style="width: 80%;" class="mx-auto carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 0"></button>
+
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <a (click)="sendingParameterToDoctorsService(images[0].title)"> <img [src]="images[0].previewImageSrc"
+                    class="d-block w-100" alt="...">
+            </a>
+            <div class="carousel-caption d- d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item active" data-bs-interval="10000">
+            <a (click)="sendingParameterToDoctorsService(images[1].title)"> <img [src]="images[1].previewImageSrc"
+                    class="d-block w-100" alt="...">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item active" data-bs-interval="10000">
+            <a (click)="sendingParameterToDoctorsService(images[2].title)"> <img [src]="images[2].previewImageSrc"
+                    class="d-block w-100" alt="...">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item active" data-bs-interval="10000">
+            <a (click)="sendingParameterToDoctorsService(images[3].title)"> <img [src]="images[3].previewImageSrc"
+                    class="d-block w-100" alt="...">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item active" data-bs-interval="10000">
+            <a (click)="sendingParameterToDoctorsService(images[4].title)"> <img [src]="images[4].previewImageSrc"
+                    class="d-block w-100" alt="...">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item active" data-bs-interval="10000">
+            <a (click)="sendingParameterToDoctorsService(images[5].title)"> <img [src]="images[5].previewImageSrc"
+                    class="d-block w-100" alt="...">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div> -->

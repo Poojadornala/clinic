@@ -1,0 +1,94 @@
+<div class="card card-profile shadow">
+  <div class="row justify-content-center">
+    <div class="col-lg-3 order-lg-2">
+      <div class="card-profile-image">
+        <a href="#">
+          <img
+            *ngIf="employee"
+            [attr.src]="'./../../../../assets/images/users/' + employee?.photo"
+            style="width: 150px"
+            class="rounded-circle"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+    <div class="d-flex justify-content-between">
+      <!-- <a href="#" class="btn btn-sm btn-info ">Connect</a> -->
+      <div *ngIf="mode == 'profile'">
+        <label
+          [for]="'file-input' + index"
+          class="btn btn-sm btn-default float-right"
+        >
+          <i class="fa-solid fa-camera" style="color: #ffffff"></i>
+        </label>
+        <input
+          [id]="'file-input' + index"
+          type="file"
+          name="file"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="card-body pt-0 pt-md-4">
+    <div class="row">
+      <div class="col">
+        <!-- <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+          <div>
+            <span class="heading">22</span>
+            <span class="description">Friends</span>
+          </div>
+          <div>
+            <span class="heading">10</span>
+            <span class="description">Photos</span>
+          </div>
+          <div>
+            <span class="heading">89</span>
+            <span class="description">Comments</span>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="text-center">
+      <h1>
+        {{ employee?.name | uppercase }}<span class="font-weight-light"></span>
+      </h1>
+      <div class="h5 font-weight-300">
+        <h4>
+          <i class="fa-solid fa-calendar-days"></i>
+          {{ employee?.age }} years
+        </h4>
+        <h4><i class="fa-solid fa-envelope"></i> {{ employee?.email }}</h4>
+        <h4>
+          <i class="fa-sharp fa-solid fa-location-dot"></i>
+          {{ employee?.address.government }} , {{ employee?.address.city }} ,
+          {{ employee?.address.street }} ,{{ employee?.address.building }}
+        </h4>
+      </div>
+      <!-- <div class="h5 mt-4">
+        <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative
+        Tim Officer
+      </div>
+      <div>
+        <i class="ni education_hat mr-2"></i>University of Computer Science
+      </div>
+      <hr class="my-4" />
+      <p>
+        Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy —
+        writes, performs and records all of his own music.
+      </p>
+      <a href="#">Show more</a> -->
+      <div *ngIf="mode == 'list' && role == 'employee'">
+        <button class="btn btn-sm btn-danger" (click)="remove(employee._id)">
+          <i class="fa-solid fa-trash" style="color: #ffffff"></i>
+        </button>
+        <app-employee-edit
+          [currentEmployee]="employee"
+          [currentIndex]="index"
+        ></app-employee-edit>
+      </div>
+    </div>
+  </div>
+</div>

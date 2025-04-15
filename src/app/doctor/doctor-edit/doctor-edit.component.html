@@ -1,0 +1,166 @@
+<button
+  type="button"
+  class="btn btn-sm btn-success"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#modal-' + index"
+  (click)="onEdit()"
+>
+  <i class="fa-solid fa-pen-to-square" style="color: #ffffff"></i>
+</button>
+<div
+  class="modal fade"
+  id="{{ 'modal-' + index }}"
+  tabindex="-1"
+  [attr.aria-labelledby]="'modal--' + index"
+  data-bs-backdrop="static"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="{{ 'modal--' + index }}">
+          Update Doctor
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="" class="formwraper" [formGroup]="editForm">
+          <div class="row mb-3">
+            <label for="" class="col-form-label col-4-sm col-5">Name</label>
+            <input
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="username"
+            />
+            <span
+              class="block-help"
+              *ngIf="
+                !editForm.get('username').valid &&
+                editForm.get('username').touched
+              "
+              >Invalid Name</span
+            >
+          </div>
+          <div class="row mb-3">
+            <label for="" class="col-form-label col-4-sm col-5">Age</label>
+            <input
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="age"
+            />
+            <span
+              class="block-help"
+              *ngIf="!editForm.get('age').valid && editForm.get('age').touched"
+              >Invalid Age</span
+            >
+          </div>
+          <div class="row mb-3">
+            <label for="" class="col-form-label col-4-sm col-5"
+              >Speciality</label
+            >
+            <select
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="speciality"
+            >
+              <option value="Internist">Internist</option>
+              <option value="Optometrist">Optometrist</option>
+              <option value="orthopedist">orthopedist</option>
+              <option value="Dentist">Dentist</option>
+              <option value="Urologist">Urologist</option>
+              <option value="Surgeon">Surgeon</option>
+            </select>
+            <span
+              class="block-help"
+              *ngIf="
+                !editForm.get('speciality').valid &&
+                editForm.get('speciality').touched
+              "
+              >Invalid Speciality</span
+            >
+          </div>
+          <div class="row mb-3">
+            <label for="" class="col-form-label col-4-sm col-5">Email</label>
+            <input
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="email"
+            />
+            <span
+              class="block-help"
+              *ngIf="
+                !editForm.get('email').valid && editForm.get('email').touched
+              "
+              >Invalid Email</span
+            >
+          </div>
+          <div class="row mb-3">
+            <label for="" class="col-form-label col-4-sm col-5">Password</label>
+            <input
+              type="password"
+              class="form-control col-8-sm col-7"
+              formControlName="password"
+            />
+            <span
+              class="block-help"
+              *ngIf="
+                !editForm.get('password').valid &&
+                editForm.get('password').touched
+              "
+              >Invalid Password</span
+            >
+          </div>
+          <div class="row mb-3">
+            <label for="" class="col-form-label col-4-sm col-5">Photo</label>
+            <input
+              type="file"
+              class="form-control col-8-sm col-7"
+              formControlName="photo"
+              (change)="onSelectPhoto($event)"
+            />
+          </div>
+          <div class="row mb-3">
+            <label for="" class="col-form-label col-4-sm col-5"
+              >Working Hours</label
+            >
+            <input
+              type="text"
+              class="form-control col-8-sm col-7"
+              formControlName="workinghours"
+            />
+            <span
+              class="block-help"
+              *ngIf="
+                !editForm.get('workinghours').valid &&
+                editForm.get('workinghours').touched
+              "
+              >Invalid Working Hours</span
+            >
+          </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!editForm.valid"
+              (click)="editDoctor()"
+            >
+              Update
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

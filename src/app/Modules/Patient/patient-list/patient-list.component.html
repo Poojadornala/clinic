@@ -1,0 +1,103 @@
+<!-- <div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>age</th>
+                <th>Disease</th>
+                <th>edit patient</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of this.Patients; let i = index">
+                <td>{{patient.Name}}</td>
+                <td>{{patient.Age}}</td>
+                <td>{{patient.Disease}}</td>
+                <td><app-edit-patient [index]="i" [id]="patient._id"></app-edit-patient></td>
+                <td><input type="button" value="delete" (click)="deletePatient(patient._id,index)"></td>
+            </tr>
+        </tbody>
+    </table> -->
+<div class="p-inputgroup">
+  <span class="p-inputgroup-addon"><i class="fa fa-search"></i></span>
+  <input
+    pInputText
+    type="text"
+    pInputText
+    class="form-control"
+    placeholder="Search By Name"
+    [(ngModel)]="search"
+    (keyup)="searchByName($event)"
+  />
+</div>
+
+<br />
+<!-- <div class="map-responsive" *ngFor="let patient of pageItems; let i = index">
+  <div
+    class="card mb-3 rounded-4 border border-3 border-secondary mx-auto"
+    style="max-width: 540px"
+  >
+    <div class="row g-0">
+      <div class="col-md-4 rounded-4 border-3 card-body">
+        <img
+          [attr.src]="'./../../../../assets/images/users/' + patient.photo"
+          class="img-fluid img-thumbnail"
+          alt="Patient Photo"
+          style="width: 150px"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title card-header text-center">{{ patient.Name }}</h5>
+          <p class="fw-bold d-inline">Age:</p>
+          <p class="card-text d-inline">{{ patient.Age }}</p>
+          <br />
+          <p class="fw-bold d-inline">section:</p>
+          <p class="card-text d-inline">{{ patient.Section }}</p>
+          <br />
+          <p class="fw-bold d-inline">Address :</p>
+          <p class="card-text d-inline">{{ patient.Address.government }}</p>
+          <p class="card-text d-inline">,{{ patient.Address.city }}</p>
+          <p class="card-text d-inline">,{{ patient.Address.street }}</p>
+          <p class="card-text d-inline">,{{ patient.Address.building }}</p>
+          <br />
+          <p class="fw-bold d-inline">email:</p>
+          <p class="card-text d-inline">{{ patient.Email }}</p>
+          <br />
+          <button class="btn">
+            <app-edit-patient [index]="i" [id]="patient._id"></app-edit-patient>
+          </button>
+          <button
+            class="btn btn-danger"
+            (click)="deletePatient(patient._id, index)"
+          >
+            delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="map-responsive my-2 col-lg-12 row justify-content-evenly">
+  <div
+    class="mx-1 my-6 col-sm-10 col-lg-5 col-xl-3"
+    *ngFor="let patient of pageItems; let i = index"
+  >
+    <app-patient-profile-card
+      [patient]="patient"
+      [count]="getFinishedCount(patient._id)"
+      [index]="i"
+      [mode]="'list'"
+      [role]="role"
+    ></app-patient-profile-card>
+  </div>
+</div>
+<p-paginator
+  [rows]="9"
+  [totalRecords]="pageNo"
+  (onPageChange)="page($event)"
+></p-paginator>
+<app-patient-add *ngIf="role == 'employee'"></app-patient-add>
+
+<!-- </div> -->

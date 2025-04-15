@@ -1,0 +1,110 @@
+<!-- <div class="d-flex align-items-center mt-5 mb-5 col-12">
+  <div class="row">
+    <h5>Name</h5>
+    <p-dropdown
+      [options]="names"
+      placeholder="Select a City"
+      optionLabel="Name"
+      #mark1
+      class="col-3"
+    ></p-dropdown>
+  </div>
+  <div class="row">
+    <h5>Dose</h5>
+    <p-dropdown
+      [options]="dosage"
+      placeholder="Select a City"
+      optionLabel="Dose"
+      #mark2
+      class="col-3"
+    ></p-dropdown>
+  </div>
+  <div class="row">
+    <h5>Price</h5>
+    <p-dropdown
+      [options]="price"
+      placeholder="Select a City"
+      optionLabel="Price"
+      #mark3
+      class="col-3"
+    ></p-dropdown>
+  </div>
+  <div class="row">
+    <h5>Stock</h5>
+    <p-dropdown
+      [options]="stock"
+      placeholder="Select a City"
+      optionLabel="Stock"
+      #mark4
+      class="col-3"
+    ></p-dropdown>
+  </div>
+  <div>
+    <button
+      class="btn btn-success"
+      (click)="search(mark1, mark2, mark3, mark4)"
+    >
+      Search
+    </button>
+
+    <button class="btn btn-danger" (click)="rest(mark1, mark2, mark3, mark4)">
+      Reset
+    </button>
+  </div>
+</div> -->
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-between">
+    <div class="col-md-2">
+      <h5>Name</h5>
+      <p-dropdown
+        [options]="names"
+        placeholder="Select a City"
+        optionLabel="Name"
+        #mark1
+      ></p-dropdown>
+    </div>
+    <div class="col-md-2">
+      <h5>Dose</h5>
+      <p-dropdown
+        [options]="dosage"
+        placeholder="Select a City"
+        optionLabel="Dose"
+        #mark2
+      ></p-dropdown>
+    </div>
+    <div class="col-md-2">
+      <h5>Price</h5>
+      <p-dropdown
+        [options]="price"
+        placeholder="Select a City"
+        optionLabel="Price"
+        #mark3
+      ></p-dropdown>
+    </div>
+    <div class="col-md-2">
+      <h5>Stock</h5>
+      <div class="d-flex">
+        <p-dropdown
+          [options]="stock"
+          placeholder="Select a City"
+          optionLabel="Stock"
+          #mark4
+        ></p-dropdown>
+        <button
+          class="btn btn-success btn-block ms-3"
+          (click)="search(mark1, mark2, mark3, mark4)"
+        >
+          Search
+        </button>
+        <button
+          class="btn btn-danger btn-block"
+          (click)="rest(mark1, mark2, mark3, mark4)"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2 mt-3 mt-md-0"></div>
+  </div>
+</div>

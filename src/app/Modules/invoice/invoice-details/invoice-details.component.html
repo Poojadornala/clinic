@@ -1,0 +1,54 @@
+<button
+  type="button"
+  class="success"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#modal-----' + index"
+  (click)="onShow()"
+>
+  details
+</button>
+<div
+  class="modal fade"
+  id="{{ 'modal-----' + index }}"
+  tabindex="-1"
+  [attr.aria-labelledby]="'#modal---' + index"
+  data-bs-backdrop="static"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="{{ 'modal---' + index }}">
+          Invoice's Detalis
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-container justify-content-center">
+          <h5>{{ invoice._id }}</h5>
+
+          <h6>Money: {{ invoice.money }}</h6>
+          <h6>Payment Method: {{ invoice.paymentMethod }}</h6>
+          <p>
+            Payment Status: {{ invoice.payment_status }} <br />
+
+            Date: {{ date }}, {{ time }}
+          </p>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

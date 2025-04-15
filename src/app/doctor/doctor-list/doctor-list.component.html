@@ -1,0 +1,37 @@
+<app-doctor-add *ngIf="role == 'admin' || role == 'employee'"> </app-doctor-add>
+
+<p-megaMenu [model]="items" (click)="filterBySpec($event)">
+  <div class="p-inputgroup">
+    <span class="p-inputgroup-addon"><i class="fa fa-search"></i></span>
+    <input
+      pInputText
+      type="text"
+      pInputText
+      class="form-control"
+      placeholder="Search By Name"
+      [(ngModel)]="search"
+      (keyup)="searchByName($event)"
+    />
+  </div>
+</p-megaMenu>
+
+<div class="map-responsive my-2 col-lg-12 row justify-content-evenly">
+  <div
+    class="mx-1 my-6 col-sm-10 col-lg-5 col-xl-3"
+    *ngFor="let doctor of pageItems; let i = index"
+  >
+    <app-doctor-profile-card
+      [doctor]="doctor"
+      [count]="getFinishedCount(doctor._id)"
+      [index]="i"
+      [mode]="'list'"
+      [role]="role"
+    ></app-doctor-profile-card>
+  </div>
+</div>
+<p-paginator
+  #paginator
+  [rows]="9"
+  [totalRecords]="pageNo"
+  (onPageChange)="page($event)"
+></p-paginator>

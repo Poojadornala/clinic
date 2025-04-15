@@ -1,0 +1,28 @@
+#pr_id_5-table > tbody > tr:nth-child(1) > td:nth-child(6) > div > button > span.mat-mdc-focus-indicator
+
+{
+    border-radius: none;
+    border-style: none;
+}
+
+#birthdaytime
+{
+     border: none;
+     background-color: white;
+     width: -webkit-fill-available;
+     color: crimson;
+}
+
+@media screen and (max-width: 64em) {
+    .ui-table td,
+    .ui-table th {
+      display: block;
+      text-align: left;
+    }
+  
+    .ui-table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+    }
+}
